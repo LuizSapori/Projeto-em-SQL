@@ -1,11 +1,5 @@
-/*=============================================================================================
-Banco:FastBank
-Autor: Luiz Eduardo Sapori
-Professor:Ralf Della Croce Filho
-Curso:AdministraÁ„o Banco de Dados Senai Roberto Mange
-===============================================================================================*/
 
---CriaÁ„o do banco
+--Cria√ß√£o do banco
 
 CREATE DATABASE FastBank
 GO
@@ -18,17 +12,17 @@ USE FastBank
 Go
 
 
--- CriaÁ„o do Banco
+-- Cria√ß√£o do Banco
 CREATE DATABASE FastBank
 GO
 
--- Conex„o com o Banco
+-- Conex√£o com o Banco
 USE FastBank
 GO
 
--- CriaÁ„o das tabelas com suas respectivas restriÁıes (constraints)
+-- Cria√ß√£o das tabelas com suas respectivas restri√ß√µes (constraints)
 
--- Tabelas que n„o possuem chave estrangeira
+-- Tabelas que n√£o possuem chave estrangeira
 
 CREATE TABLE Endereco(
 	codigo INT IDENTITY,
@@ -56,7 +50,7 @@ CREATE TABLE Conta(
 GO
 
 -- Nas tabelas com chave estrangeira criar primeiro a tabela 
--- com a respectiva chave prim·ria relacionada
+-- com a respectiva chave prim√°ria relacionada
 
 
 
@@ -100,7 +94,7 @@ CREATE TABLE ClientePF(
 	CONSTRAINT UK_ClientePF_rg UNIQUE(rg),
 	CONSTRAINT FK_Codigo_PF FOREIGN KEY (codigo) 
                             REFERENCES Cliente (codigo)
-	-- Foreing key È o atributo codigo
+	-- Foreing key √© o atributo codigo
 )
 GO
 
@@ -115,7 +109,7 @@ CREATE TABLE ClientePJ(
 	CONSTRAINT UK_ClientePJ_im UNIQUE(inscricaoMunicipal),
 	CONSTRAINT FK_Codigo_PJ FOREIGN KEY (codigo) 
                             REFERENCES Cliente (codigo)
-	-- Foreing key È o atributo codigo
+	-- Foreing key √© o atributo codigo
 )
 GO
 
