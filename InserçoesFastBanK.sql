@@ -1,16 +1,9 @@
-/*------------------------------------------------------
-Banco: FastBank
-Autor: Ralfe
-⁄ltima alteraÁ„o: 21/03/2023 - 22:00 - Ralfe
-DescriÁ„o: Testes de inserÁıes de dados
-           Consualtas e exclusıes gerais (sem cl·usulas)
-------------------------------------------------------*/
 
--- CriaÁ„o do Banco
+-- Cria√ß√£o do Banco
 CREATE DATABASE FastBank
 GO
 
--- Conex„o com o Banco
+-- Conex√£o com o Banco
 USE Fastbank
 GO
 
@@ -30,7 +23,7 @@ CREATE TABLE Cliente(
 GO
 
 
--- InserÁ„o de dados para todos os atributos
+-- Inser√ß√£o de dados para todos os atributos
 INSERT INTO Cliente
 	(codigoEndereco, nome_razaoSocial, nomeSocial_fantasia, foto_logo, dataNascimento_abertura, usuario, senha) -- atributos
 VALUES
@@ -41,25 +34,25 @@ GO
 SELECT * FROM Cliente
 
 
--- InserÁ„o somente dos dados obrigatÛrios
+-- Inser√ß√£o somente dos dados obrigat√≥rios
 INSERT INTO Cliente
 	(codigoEndereco, nome_razaoSocial, foto_logo, dataNascimento_abertura, usuario, senha) -- atributos
 VALUES
-	(0, 'Sheila Tuna EspÌrito Santo', '\foto\4.jpg', '05/03/1980', 'sheila', 123) -- valores
+	(0, 'Sheila Tuna Esp√≠rito Santo', '\foto\4.jpg', '05/03/1980', 'sheila', 123) -- valores
 GO
 
 -- Consulta geral
 SELECT * FROM Cliente
 
 
--- InserÁ„o somente dos dados obrigatÛrios
+-- Inser√ß√£o somente dos dados obrigat√≥rios
 INSERT INTO Cliente
 	(nome_razaoSocial, foto_logo, dataNascimento_abertura, usuario, senha) -- atributos
 VALUES
 	('Abigail Barateiro Cangueiro', '\foto\6.jpg', '30/07/1987', 'abigail', 147) -- valores
 GO
-/* N„o È possÌvel inserir o valor NULL na coluna 'codigoEndereco', tabela 'FastBank.dbo.Cliente'; 
-   a coluna n„o permite nulos. Falha em INSERT. */
+/* N√£o √© poss√≠vel inserir o valor NULL na coluna 'codigoEndereco', tabela 'FastBank.dbo.Cliente'; 
+   a coluna n√£o permite nulos. Falha em INSERT. */
 
 -- Consulta geral
 SELECT * FROM Cliente
@@ -72,15 +65,15 @@ INSERT INTO Cliente
 VALUES
 	('Abigail Barateiro Cangueiro', '\foto\6.jpg', '30/07/1987', 'abigail', 147) -- valores
 GO
-/* Existem mais colunas na instruÁ„o INSERT do que valores especificados na cl·usula VALUES. 
-   O n˙mero de valores da cl·usula VALUES deve corresponder ao n˙mero de colunas especificado na instruÁ„o INSERT. */
+/* Existem mais colunas na instru√ß√£o INSERT do que valores especificados na cl√°usula VALUES. 
+   O n√∫mero de valores da cl√°usula VALUES deve corresponder ao n√∫mero de colunas especificado na instru√ß√£o INSERT. */
 
 -- Consulta geral
 SELECT * FROM Cliente
 
 
 
--- InserÁ„o correta
+-- Inser√ß√£o correta
 INSERT INTO Cliente
 	(codigoEndereco, nome_razaoSocial, foto_logo, dataNascimento_abertura, usuario, senha) -- atributos
 VALUES
@@ -90,31 +83,31 @@ GO
 -- Consulta geral
 SELECT * FROM Cliente
 
-/* Obs.: Quando um INSERT "falha", a chave prim·ria tambÈm È incrementada pelo IDENTITY
-         (pulando um n˙mero por falha). */
+/* Obs.: Quando um INSERT "falha", a chave prim√°ria tamb√©m √© incrementada pelo IDENTITY
+         (pulando um n√∫mero por falha). */
 
 
 
--- InserÁ„o com valor do atributo UNIQUE duplicado
+-- Inser√ß√£o com valor do atributo UNIQUE duplicado
 INSERT INTO Cliente
 	(codigoEndereco, nome_razaoSocial, nomeSocial_fantasia, foto_logo, dataNascimento_abertura, usuario, senha) -- atributos
 VALUES
 	(10, 'Regina e Julia Entregas Expressas ME', 'Entregas Express', '\fotos\8.jpg', '11/03/2018', 'alice', 987) -- valores
 GO
-/* ViolaÁ„o da restriÁ„o UNIQUE KEY 'UK_Cliente_usuario'. 
-   N„o È possÌvel inserir a chave duplicada no objeto 'dbo.Cliente'. 
-   O valor de chave duplicada È (alice     ). */
+/* Viola√ß√£o da restri√ß√£o UNIQUE KEY 'UK_Cliente_usuario'. 
+   N√£o √© poss√≠vel inserir a chave duplicada no objeto 'dbo.Cliente'. 
+   O valor de chave duplicada √© (alice     ). */
 
 -- Consulta geral
 SELECT * FROM Cliente
 	 
 
--- InserÁ„o de dados em lote com descriÁ„o dos campos
+-- Inser√ß√£o de dados em lote com descri√ß√£o dos campos
 INSERT INTO Cliente
 	(codigoEndereco, nome_razaoSocial, foto_logo, dataNascimento_abertura, usuario, senha) -- atributos
 VALUES
 	(10, 'Regina e Julia Entregas Expressas ME', '\fotos\8.jpg', '11/03/2018', 'express', 987),  -- valores
-	(20, 'Jo„o Barbalho Vilalobos', '\fotos\10.jpg', '15/06/1990', 'joao', 357),
+	(20, 'Jo√£o Barbalho Vilalobos', '\fotos\10.jpg', '15/06/1990', 'joao', 357),
 	(30, 'Juan e Valentina Alimentos ME', '\fotos\12.jpg','12/11/2015', 'avenida', 258)
 GO
 
@@ -126,7 +119,7 @@ GO
 INSERT INTO Cliente
 VALUES (40, 'Derek Bicudo Lagos', '', '\fotos\10.jpg', '12/03/2002', 'derek', 258),
 	   (50, 'Marcelo Frois Caminha', 'Ana Maria', '\fotos\12.jpg', '23/11/2001', 'ana', 654),   
-       (60, 'Gabriel e Marcelo Corretores Associados Ltda', 'Imobili·ria Cidade', '\fotos\18.jpg', '26/09/2017', 'cidade', 474)
+       (60, 'Gabriel e Marcelo Corretores Associados Ltda', 'Imobili√°ria Cidade', '\fotos\18.jpg', '26/09/2017', 'cidade', 474)
 
 -- Consulta geral
 SELECT * FROM Cliente
@@ -134,7 +127,7 @@ GO
 
 
 -------------------------------------------------------------------------------------------------
--- RestriÁıes de relacionamento
+-- Restri√ß√µes de relacionamento
 
 -- DROP TABLE Cliente
 
@@ -169,9 +162,9 @@ GO
 /*  *** Dados do Cliente *** 
 	Nome: Alice Barbalho Vilalobos
 	Nome social: Alice Vilalobos
-	EndereÁo: Avenida Cristiano Olsen, 10
-	Bairro: Jardim SumarÈ
-	Cidade: AraÁatuba
+	Endere√ßo: Avenida Cristiano Olsen, 10
+	Bairro: Jardim Sumar√©
+	Cidade: Ara√ßatuba
 	Estado: SP
 	CEP: 16015244
 	Foto: \foto\2.jpg
@@ -180,13 +173,13 @@ GO
 	Senha: 987
 */
 
--- Pra inserÁ„o de um cliente seu endereÁo j· deve existir
+-- Pra inser√ß√£o de um cliente seu endere√ßo j√° deve existir
 -- Endereco(1,1) <-> (1,n)Cliente
 
 INSERT INTO Endereco
 	(logradouro, bairro, cidade, uf, cep)
 VALUES
-	('Avenida Cristiano Olsen, 10', 'Jardim SumarÈ', 'AraÁatuba','SP','16015244')
+	('Avenida Cristiano Olsen, 10', 'Jardim Sumar√©', 'Ara√ßatuba','SP','16015244')
 GO
 	
 INSERT INTO Cliente
@@ -195,7 +188,7 @@ VALUES
 	(1, 'Alice Barbalho Vilalobos', 'Alice Vilalobos', '\foto\2.jpg', '17/05/1992', 'alice', 987) -- valores
 GO
 
-/* A instruÁ„o INSERT conflitou com a restriÁ„o do FOREIGN KEY "FK_Cliente_Endereco". 
+/* A instru√ß√£o INSERT conflitou com a restri√ß√£o do FOREIGN KEY "FK_Cliente_Endereco". 
    O conflito ocorreu no banco de dados "FastBank", tabela "dbo.Endereco", column 'codigo'. */
 
 SELECT * FROM Endereco
@@ -204,7 +197,7 @@ SELECT * FROM Cliente
 
 
 -------------------------------------------------------------------------------------------------
--- RestriÁıes de CHECK
+-- Restri√ß√µes de CHECK
 
 
 CREATE TABLE Conta(
@@ -235,13 +228,13 @@ INSERT INTO Conta
 VALUES
 	('01470', '1234568', 'aplicacao', 3000.00, 1)
 GO
- /* A instruÁ„o INSERT conflitou com a restriÁ„o do CHECK "CHK_Conta_tipo". 
+ /* A instru√ß√£o INSERT conflitou com a restri√ß√£o do CHECK "CHK_Conta_tipo". 
     O conflito ocorreu no banco de dados "FastBank", tabela "dbo.Conta", column 'tipo'. */
 
 
 
 -------------------------------------------------------------------------------------------------
--- Exclus„o em cascata
+-- Exclus√£o em cascata
 
 CREATE TABLE Contato(
 	codigo INT IDENTITY,
@@ -262,7 +255,7 @@ SELECT * FROM Endereco
 SELECT * FROM Cliente
 
 
--- Para inserir um Contato o Cliente j· deve existir
+-- Para inserir um Contato o Cliente j√° deve existir
 -- Contato(1,n) <-> (1,1)Cliente
 
 INSERT INTO Contato
@@ -282,11 +275,11 @@ SELECT * FROM Cliente
 SELECT * FROM Contato
 
 
--- Tentativa de exclus„o de registro relacionado
+-- Tentativa de exclus√£o de registro relacionado
 DELETE FROM Endereco
 WHERE codigo = 1 
 
-/* A instruÁ„o DELETE conflitou com a restriÁ„o do REFERENCE "FK_Cliente_Endereco". 
+/* A instru√ß√£o DELETE conflitou com a restri√ß√£o do REFERENCE "FK_Cliente_Endereco". 
    O conflito ocorreu no banco de dados "FastBank", tabela "dbo.Cliente", column 'codigoEndereco'.*/
 
 SELECT * FROM Endereco
@@ -294,7 +287,7 @@ SELECT * FROM Cliente
 SELECT * FROM Contato
 
 
---  Exclus„o ocorre na tabela Cliente e tambÈm (por cascata) na tabela Contato (registros relacionados)
+--  Exclus√£o ocorre na tabela Cliente e tamb√©m (por cascata) na tabela Contato (registros relacionados)
 DELETE FROM Cliente
 WHERE codigo = 2 
 
